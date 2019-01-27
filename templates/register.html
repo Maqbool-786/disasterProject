@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>Auxilior - We save lives </title>
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.min.css" %}"/>
+
+    <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
+    <link rel="stylesheet" type="text/css" href="{% static "css/custom.css" %}"/>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div id="logo" title="Auxilior means help in Latin" style="margin-left:3%;margin-top:-8px;width:25%;">
+        <a href="{% url 'flood_home' %}">
+            <img src="{% static "images/logo_orange.png" %}" alt="Auxilior" style="height:120px;">
+        </a>
+    </div>
+
+<div class="container-fluid" style="margin-top:-40px;margin-bottom: 50px;">
+    <div style="margin-left: 200px"> 
+        <br>
+     <h1> Organisation/ Volunteer Registration </h1>
+        <div class="row">
+            <div class="col-md-10 ">
+                <form class="form-horizontal" method="POST">{% csrf_token %}
+                    <fieldset>
+                        <legend><h4>Please enter the following details</h4></legend>
+                        {% for error in user_form.non_field_errors %}
+                        <div class="form-group has-errors text-danger small">
+                            {{ error }}
+                        </div>
+                        {% endfor %}
+                        {% for field in user_form %}
+                        <div class="form-group">
+                            <label class="col-md-4 control-label"
+                                       style="color: #31b0d5; font-family:Helvetica Neue,Helvetica,Arial,sans-serif;"
+                                       for="{{ form.phone.id_for_label }}">{{ field.label_tag }}</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                {{ field }}
+                                </div>
+                            </div>
+                             <div class="form-group has-errors text-danger small">
+                                    {{ field.errors }}
+                            </div>
+                        </div>
+                        {% endfor %}
+						<div class="form-group">
+                                <label class="col-md-4 control-label"
+                                       style="color: #31b0d5; font-family:Helvetica Neue,Helvetica,Arial,sans-serif;"
+                                       for="{{ form.phone.id_for_label }}">{{ dform.name.label_tag }}</label>
+
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        {{ dform.name }}
+                                    </div>
+                                </div>
+                                <div class="form-group has-errors text-danger small">
+                                    {{ dform.name.errors }}
+                                </div>
+                        </div>
+                        <div class="form-group">
+                                <label class="col-md-4 control-label"
+                                       style="color: #31b0d5; font-family:Helvetica Neue,Helvetica,Arial,sans-serif;"
+                                       for="{{ form.phone.id_for_label }}">{{ dform.phone.label_tag }}</label>
+
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        {{ dform.phone }}
+                                    </div>
+                                </div>
+                                <div class="form-group has-errors text-danger small">
+                                    {{ dform.phone.errors }}
+                                </div>
+                        </div>
+						<h3>Your Location : </h3>
+
+                        <div class="row">
+                            <div class="col-md-5 form-group">
+                                <label class="col-md-4 control-label"
+                                       style="color: #31b0d5; font-family:Helvetica Neue,Helvetica,Arial,sans-serif;"
+                                       for="{{ form.lon.id_for_label }}">{{ dform.lon.label_tag }}</label>
+
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        {{ dform.lon }}
+                                    </div>
+                                </div>
+                                <div class="form-group has-errors text-danger small">
+                                    {{ dform.lon.errors }}
+                                </div>
+                            </div>
+                            <div class="col-md-5 form-group">
+                                <label class="col-md-4 control-label"
+                                       style="color: #31b0d5; font-family:Helvetica Neue,Helvetica,Arial,sans-serif;"
+                                       for="{{ form.lat.id_for_label }}">{{ dform.lat.label_tag }}</label>
+
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        {{ dform.lat }}
+                                    </div>
+                                </div>
+                                <div class="form-group has-errors text-danger small">
+                                    {{ dform.lat.errors }}
+                                </div>
+                            </div>
+                        </div>
+						<br>
+                        <div class="form-control col-lg-4" id="locator"
+                             style="width: 400px; height: 500px; margin-left: 20%"></div>
+                        <br>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label"></label>
+
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                                <a href="{% url 'register' %}" class="btn btn-danger"
+                                   style="margin-left:30px">Clear</a>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <script src="{% static "js/subs.js" %}"></script>
+                <script async defer
+                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcHofqZ7qVRGDmAOFyJK9ufcjJow6fFEU&callback=initMap"></script>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="small-print">
+        <div class="container">
+            <p><a href="#">Terms &amp; Conditions</a> | <a href="#">Privacy Policy</a> | <a href="#">Contact</a></p>
+
+            <p>Copyright &copy; The Dark Phoenix team </p>
+        </div>
+    </div>
+</footer>
+</body>
+
+</html>

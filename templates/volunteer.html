@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="container-fluid">
+
+        <!-- Left Column -->
+        <div class="col-sm-3">
+
+            <!-- List-Group Panel -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title" style="font-size:30px;"><span class="glyphicon glyphicon-random"
+                                                                          style="margin-right:30px;"></span>Floods</h1>
+                </div>
+                <div class="list-group">
+                    <a href="{% url 'current_stats' %}" class="list-group-item">Mark my location</a>
+                    <a href="{% url 'register' %}" class="list-group-item">Rescue Team/ Volunteers</a>
+                    <a href="{% url 'flood_predictions' %}" class="list-group-item">Predictions</a>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title"><span class="glyphicon glyphicon-info-sign"></span> Factors Responsible</h1>
+                </div>
+
+                <div class="panel-body">
+                    <p>Climate change has played an important role in causing large-scale floods across central India,
+                        including the Mumbai floods of 2006 and 2017. During 1901-2015, there has been a three-fold rise
+                        in widespread extreme rainfall events, across central and northern India – Gujarat, Maharashtra,
+                        Madhya Pradesh, Chhattisgarh, Telangana, Odisha, Jharkhand, Assam and parts of Western Ghats –
+                        Goa, north Karnataka and South Kerala.
+                    </p>
+
+                    <p>
+                        <a href="https://en.wikipedia.org/wiki/Floods_in_India" class="btn btn-default">More</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Text Panel -->
+
+        </div><!--/Left Column-->
+
+
+        <!-- Center Column -->
+        <div class="col-sm-6">
+
+            <!-- Articles -->
+            <br>
+            <br>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                <h3 class="panel-title">For Volunteers and Rescue Organisations : </h3>
+                </div>
+            <br>
+            <div class="panel-body">
+            <p style="font-size: medium; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">Please note that this section is for registration and login of Rescue Teams and Volunteers.
+            These may include Government organisations and NGOs. After Registration, You will get live information about
+            disasters occcuring in your area and you can monitor the needs and supplies available in that area.</p>
+            </div>
+            </div>
+            <br>
+            <div class="container" style="margin-left: 5%">
+                            <div class="col-sm-5">
+						        <a id="subs" class="btn-warning " href="{% url 'register' %}" style="margin-left:-10%">Register</a>
+                            </div>
+                            <div class="col-sm-5" style="margin-left: -70%">
+                                <a id="subs" class="btn-warning " href="{% url 'login' %}">Login</a>
+                            </div>
+            </div>
+            <br>
+        </div><!--/Center Column-->
+
+
+        <!-- Right Column -->
+        <div class="col-sm-3">
+
+            <!-- Form -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="glyphicon glyphicon-bullhorn"></span>
+                        Important Announcements
+                    </h3>
+                </div>
+                <div class="panel-body" style="color: red">
+                    <p>{% if data.warn %}
+                        {{ data.warn }}
+                    {% else %}
+                        Warnings will flash here and in the case of high emergency situation, it will be automatically
+                        posted to our Facebook Page - 'Let's cope with disaster'
+                    {% endif %}
+                    </p>
+                </div>
+            </div>
+            <br>
+            <!-- Carousel -->
+            <h3><span class="glyphicon glyphicon-modal-window"></span> Prevention </h3>
+
+            <div id="side-carousel" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#side-carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#side-carousel" data-slide-to="1"></li>
+                    <li data-target="#side-carousel" data-slide-to="2"></li>
+                    <li data-target="#side-carousel" data-slide-to="3"></li>
+                    <li data-target="#side-carousel" data-slide-to="4"></li>
+                    <li data-target="#side-carousel" data-slide-to="5"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                    <a href="{% static "images/pre1.jpg" %}" target="_blank">
+                        <img style="height:400px;width:350px;" class="img-responsive"
+                             src="{% static "images/pre1.jpg" %}" alt="">
+                    </a>
+
+                    </div>
+                    <div class="item">
+                        <a href="{% static "images/pre2.jpg" %}" target="_blank">
+                        <img style="height:400px;width:350px;" class="img-responsive"
+                             src="{% static "images/pre2.jpg" %}" alt="">
+                             </a>
+
+                    </div>
+                    <div class="item">
+                        <a href="{% static "images/pre3.jpg" %}" target="_blank">
+                        <img style="height:400px;width:350px;" class="img-responsive"
+                             src="{% static "images/pre3.jpg" %}" alt="">
+                        </a>
+
+                    </div>
+                    <div class="item">
+                        <a href="{% static "images/pre4.jpg" %}" target="_blank">
+                        <img style="height:400px;width:350px;" class="img-responsive"
+                             src="{% static "images/pre4.jpg" %}" alt="">
+                        </a>
+                    </div>
+
+                    <div class="item">
+                        <a href="{% static "images/pre5.jpg" %}" target="_blank">
+                        <img style="height:400px;width:350px;" class="img-responsive"
+                             src="{% static "images/pre5.jpg" %}" alt="">
+                        </a>
+                    </div>
+
+                    <div class="item">
+                        <a href="{% static "images/pre6.jpg" %}" target="_blank">
+                        <img style="height:400px;width:350px;" class="img-responsive"
+                             src="{% static "images/pre6.jpg" %}" alt="">
+                        </a>
+                    </div>
+
+                </div>
+                <a class="left carousel-control" href="#side-carousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#side-carousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+
+        </div><!--/Right Column -->
+
+    </div><!--/container-fluid-->
+{% endblock %}
